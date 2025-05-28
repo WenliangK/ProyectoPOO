@@ -1,6 +1,7 @@
-package tienda.dao;
+package DAO;
 
-import tienda.ComprobanteCompra;
+import Tienda.ComprobanteCompra;
+
 import java.util.List;
 import java.util.ArrayList;
 

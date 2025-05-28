@@ -1,17 +1,17 @@
-package tienda.dao;
+package DAO;
 
-import tienda.Empleado;
+import Tienda.Producto;
 import java.util.List;
 import java.util.ArrayList;
 
-public class EmpleadoDAO implements IBaseDAO<Empleado> {
+public class ProductoDAO implements IBaseDAO<Producto> {
     @Override
-    public void insertar(Empleado empleado) {
+    public void insertar(Producto producto) {
         // Lógica de inserción
     }
 
     @Override
-    public void actualizar(Empleado empleado) {
+    public void actualizar(Producto producto) {
         // Lógica de actualización
     }
 
@@ -21,14 +21,14 @@ public class EmpleadoDAO implements IBaseDAO<Empleado> {
     }
 
     @Override
-    public Empleado obtener(int id) {
-        // Lógica para obtener empleado
+    public Producto obtener(int id) {
+        // Lógica para obtener producto
         return null;
     }
 
     @Override
-    public List<Empleado> listar() {
-        // Lógica para listar empleados
+    public List<Producto> listar() {
+        // Lógica para listar productos
         return new ArrayList<>();
     }
 }

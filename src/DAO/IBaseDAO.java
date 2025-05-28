@@ -1,4 +1,4 @@
-package tienda.dao;
+package DAO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package tienda;
+package Paneles;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,4 +1,6 @@
-package tienda;
+package Tienda;
+
+import Paneles.*;
 
 import javax.swing.*;
 

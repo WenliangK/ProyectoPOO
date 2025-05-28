@@ -1,6 +1,7 @@
-package tienda.dao;
+package DAO;
 
-import tienda.Cliente;
+import Tienda.Cliente;
+
 import java.util.List;
 import java.util.ArrayList;
 

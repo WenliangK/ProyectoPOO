@@ -1,4 +1,6 @@
-package tienda;
+package Tienda;
+
+import DAO.CategoriaDAO;
 
 import java.sql.*;
 

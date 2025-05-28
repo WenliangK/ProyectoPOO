@@ -1,4 +1,4 @@
-package tienda;
+package Tienda;
 
 
 public class Categoria {

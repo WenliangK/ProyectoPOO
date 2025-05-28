@@ -1,6 +1,6 @@
-package tienda.dao;
+package DAO;
 
-import tienda.TicketSoporte;
+import Tienda.TicketSoporte;
 import java.util.List;
 import java.util.ArrayList;
 
