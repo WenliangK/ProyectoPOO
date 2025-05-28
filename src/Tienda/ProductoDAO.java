@@ -1,5 +1,7 @@
 package Tienda;
 
+import BusinessEntity.Categoria;
+import BusinessEntity.Producto;
 import DAO.CategoriaDAO;
 
 import java.sql.*;

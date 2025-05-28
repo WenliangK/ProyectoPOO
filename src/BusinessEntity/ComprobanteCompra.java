@@ -1,4 +1,4 @@
-package Tienda;
+package BusinessEntity;
 
 import java.util.Date;
 

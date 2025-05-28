@@ -1,6 +1,6 @@
 package DAO;
 
-import Tienda.ComprobanteCompra;
+import BusinessEntity.ComprobanteCompra;
 
 import java.util.List;
 import java.util.ArrayList;

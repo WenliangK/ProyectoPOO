@@ -1,6 +1,6 @@
 package DAO;
 
-import Tienda.TicketSoporte;
+import BusinessEntity.TicketSoporte;
 import java.util.List;
 import java.util.ArrayList;
 

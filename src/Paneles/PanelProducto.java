@@ -1,8 +1,8 @@
 package Paneles;
 
 import DAO.CategoriaDAO;
-import Tienda.Categoria;
-import Tienda.Producto;
+import BusinessEntity.Categoria;
+import BusinessEntity.Producto;
 import Tienda.ProductoDAO;
 
 import javax.swing.*;

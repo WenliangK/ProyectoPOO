@@ -1,6 +1,6 @@
 package DAO;
 
-import Tienda.Categoria;
+import BusinessEntity.Categoria;
 import Tienda.Conexion;
 
 import java.sql.*;

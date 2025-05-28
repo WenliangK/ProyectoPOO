@@ -1,6 +1,6 @@
 package DAO;
 
-import Tienda.Cliente;
+import BusinessEntity.Cliente;
 
 import java.util.List;
 import java.util.ArrayList;
