@@ -1,34 +1,73 @@
-package DAO;
+package Tienda;
 
+import BusinessEntity.Categoria;
 import BusinessEntity.Producto;
-import java.util.List;
+import DAO.CategoriaDAO;
+
+import java.sql.*;
+
 import java.util.ArrayList;
 
-public class ProductoDAO implements IBaseDAO<Producto> {
-    @Override
-    public void insertar(Producto producto) {
-        // Lógica de inserción
+
+public  class ProductoDAO {
+
+    private CategoriaDAO categoriaDAO = new CategoriaDAO();
+
+
+    public ArrayList<Producto> listarProductos() {
+
+        ArrayList<Producto> lista = new ArrayList<>();
+
+        String sql = "SELECT p.*, c.nombre AS cat_nombre FROM productos p JOIN categorias c ON p.categoria_id = c.id";
+
+
+        try (Connection conn = Conexion.conectar();
+
+             Statement stmt = conn.createStatement();
+
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+
+            while (rs.next()) {
+
+                Categoria cat = new Categoria(rs.getInt("categoria_id"), rs.getString("cat_nombre"));
+
+                Producto p = new Producto(rs.getInt("id"), rs.getString("nombre"), cat, rs.getDouble("precio"), rs.getInt("stock"));
+
+                lista.add(p);
+
+            }
+        } catch (SQLException e) {
+
+            System.out.println("Error listando productos: " + e.getMessage());
+
+        }
+        return lista;
+
     }
 
-    @Override
-    public void actualizar(Producto producto) {
-        // Lógica de actualización
-    }
+    public void insertarProducto(Producto p) {
 
-    @Override
-    public void eliminar(int id) {
-        // Lógica de eliminación
-    }
+        String sql = "INSERT INTO productos(nombre, categoria_id, precio, stock) VALUES (?, ?, ?, ?)";
 
-    @Override
-    public Producto obtener(int id) {
-        // Lógica para obtener producto
-        return null;
-    }
+        try (Connection conn = Conexion.conectar();
 
-    @Override
-    public List<Producto> listar() {
-        // Lógica para listar productos
-        return new ArrayList<>();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, p.getNombre());
+
+            stmt.setInt(2, p.getCategoria().getId());
+
+            stmt.setDouble(3, p.getPrecio());
+
+            stmt.setInt(4, p.getStock());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+
+            System.out.println("Error insertando producto: " + e.getMessage());
+
+        }
     }
 }

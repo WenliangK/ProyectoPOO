@@ -1,4 +1,4 @@
-package Paneles;
+package View;
 
 import DAO.CategoriaDAO;
 import BusinessEntity.Categoria;

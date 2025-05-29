@@ -1,4 +1,4 @@
-package Tienda;
+package BusinessEntity;
 
 public class CuentaUsuario {
     private String usuario;

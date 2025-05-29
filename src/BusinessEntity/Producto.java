@@ -1,6 +1,8 @@
 package BusinessEntity;
 
 
+import Tienda.Categoria;
+
 public class Producto {
 
     private int id;

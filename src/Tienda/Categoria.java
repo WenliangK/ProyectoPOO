@@ -1,4 +1,4 @@
-package BusinessEntity;
+package Tienda;
 
 
 public class Categoria {
