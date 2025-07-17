@@ -1,36 +1,91 @@
 package BusinessEntity;
 
-import java.util.Date;
-
 public class TicketSoporte {
     private int id;
-    private Cliente cliente;
-    private Producto producto;
     private String descripcion;
     private String estado;
-    private Date fechaRegistro;
+    private String fechaRegistro;
+    private int clienteId;
+    private int empleadoId;
 
-    public TicketSoporte(int id, Cliente cliente, Producto producto, String descripcion, String estado, Date fechaRegistro) {
+    // Constructor con ID (para listar, obtener)
+    public TicketSoporte(int id, String descripcion, String estado, String fechaRegistro, int clienteId, int empleadoId) {
         this.id = id;
-        this.cliente = cliente;
-        this.producto = producto;
         this.descripcion = descripcion;
         this.estado = estado;
         this.fechaRegistro = fechaRegistro;
+        this.clienteId = clienteId;
+        this.empleadoId = empleadoId;
     }
 
-    // Getters y Setters
-    public int getId() { return id; }
-    public Cliente getCliente() { return cliente; }
-    public Producto getProducto() { return producto; }
-    public String getDescripcion() { return descripcion; }
-    public String getEstado() { return estado; }
-    public Date getFechaRegistro() { return fechaRegistro; }
+    // Constructor sin ID (para insertar)
+    public TicketSoporte(String descripcion, String estado, String fechaRegistro, int clienteId, int empleadoId) {
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.fechaRegistro = fechaRegistro;
+        this.clienteId = clienteId;
+        this.empleadoId = empleadoId;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setCliente(Cliente cliente) { this.cliente = cliente; }
-    public void setProducto(Producto producto) { this.producto = producto; }
-    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
-    public void setEstado(String estado) { this.estado = estado; }
-    public void setFechaRegistro(Date fechaRegistro) { this.fechaRegistro = fechaRegistro; }
+    // Getters
+    public int getId() {
+        return id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getFechaRegistro() {
+        return fechaRegistro;
+    }
+
+    public int getClienteId() {
+        return clienteId;
+    }
+
+    public int getEmpleadoId() {
+        return empleadoId;
+    }
+
+    // Setters (opcional, pero útiles)
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setFechaRegistro(String fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
+    }
+
+    public void setClienteId(int clienteId) {
+        this.clienteId = clienteId;
+    }
+
+    public void setEmpleadoId(int empleadoId) {
+        this.empleadoId = empleadoId;
+    }
+
+    @Override
+    public String toString() {
+        return "TicketSoporte{" +
+                "id=" + id +
+                ", descripcion='" + descripcion + '\'' +
+                ", estado='" + estado + '\'' +
+                ", fechaRegistro='" + fechaRegistro + '\'' +
+                ", clienteId=" + clienteId +
+                ", empleadoId=" + empleadoId +
+                '}';
+    }
 }

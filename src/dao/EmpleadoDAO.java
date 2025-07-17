@@ -1,6 +1,6 @@
 package dao;
 
-import model.Empleado;
+import BusinessEntity.Empleado;
 import util.Conexion;
 
 import java.sql.Connection;
@@ -12,6 +12,7 @@ public class EmpleadoDAO {
 
     public Empleado login(String usuario, String contrasena) {
         String sql = "SELECT * FROM Empleado WHERE usuario = ? AND contrasena = ?";
+        Empleado emp = null;
 
         try (Connection conn = Conexion.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -21,17 +22,18 @@ public class EmpleadoDAO {
 
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Empleado(
+                emp = new Empleado(
                         rs.getInt("id_empleado"),
+                        rs.getString("nombre"),
                         rs.getString("usuario"),
-                        rs.getString("contrasena"),
-                        rs.getString("nombre")
+                        rs.getString("contrasena")
                 );
             }
+
         } catch (SQLException e) {
-            System.err.println("❌ Error en login: " + e.getMessage());
+            System.err.println("❌ Error al iniciar sesión: " + e.getMessage());
         }
 
-        return null; // Login fallido
+        return emp;
     }
 }

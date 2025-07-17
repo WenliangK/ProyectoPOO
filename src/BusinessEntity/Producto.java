@@ -1,64 +1,69 @@
 package BusinessEntity;
 
-
-import Tienda.Categoria;
-
 public class Producto {
-
     private int id;
-
     private String nombre;
-
-    private Categoria categoria;
-
     private double precio;
-
     private int stock;
+    private int idCategoria;
 
-
-    public Producto(int id, String nombre, Categoria categoria, double precio, int stock) {
-
+    public Producto(int id, String nombre, double precio, int stock, int idCategoria) {
         this.id = id;
-
         this.nombre = nombre;
-
-        this.categoria = categoria;
-
         this.precio = precio;
-
         this.stock = stock;
+        this.idCategoria = idCategoria;
+    }
 
+    public Producto(String nombre, double precio, int stock, int idCategoria) {
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+        this.idCategoria = idCategoria;
     }
 
     public int getId() {
- return id;
- }
-    public String getNombre() {
- return nombre;
- }
-    public Categoria getCategoria() {
- return categoria;
- }
-    public double getPrecio() {
- return precio;
- }
-    public int getStock() {
- return stock;
- }
+        return id;
+    }
 
     public void setId(int id) {
- this.id = id;
- }
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
     public void setNombre(String nombre) {
- this.nombre = nombre;
- }
-    public void setCategoria(Categoria categoria) {
- this.categoria = categoria;
- }
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
     public void setPrecio(double precio) {
- this.precio = precio;
- }
+        this.precio = precio;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
     public void setStock(int stock) {
- this.stock = stock;
- }
+        this.stock = stock;
+    }
+
+    public int getIdCategoria() {
+        return idCategoria;
+    }
+
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " - S/." + precio + " - Stock: " + stock;
+    }
 }

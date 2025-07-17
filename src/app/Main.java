@@ -1,11 +1,10 @@
 package app;
 
 import dao.*;
-import model.*;
+import BusinessEntity.*;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -56,7 +55,7 @@ public class Main {
         sc.close();
     }
 
-    // Categorías
+    // MENÚ CATEGORÍAS
     public static void menuCategorias(Scanner sc, CategoriaDAO dao) {
         int opcion;
         do {
@@ -72,7 +71,7 @@ public class Main {
                 case 1 -> {
                     System.out.print("Nombre: ");
                     String nombre = sc.nextLine();
-                    dao.insertar(new Categoria(nombre));
+                    dao.insertar(new Categoria(0, nombre));
                 }
                 case 2 -> {
                     List<Categoria> lista = dao.obtenerTodas();
@@ -88,11 +87,10 @@ public class Main {
                 case 4 -> System.out.println("↩ Volviendo al menú principal...");
                 default -> System.out.println("⚠️ Opción inválida.");
             }
-
         } while (opcion != 4);
     }
 
-    // Productos
+    // MENÚ PRODUCTOS
     public static void menuProductos(Scanner sc, ProductoDAO dao) {
         int opcion;
         do {
@@ -115,12 +113,12 @@ public class Main {
                     System.out.print("ID de categoría: ");
                     int idCat = Integer.parseInt(sc.nextLine());
 
-                    dao.insertar(new Producto(nombre, precio, stock, idCat));
+                    dao.insertar(new Producto(0, nombre, precio, stock, idCat));
                 }
                 case 2 -> {
                     List<Producto> productos = dao.obtenerTodos();
                     for (Producto p : productos) {
-                        System.out.println("→ " + p.getId() + " - " + p);
+                        System.out.println("→ " + p.getId() + " - " + p.getNombre());
                     }
                 }
                 case 3 -> {
@@ -131,11 +129,10 @@ public class Main {
                 case 4 -> System.out.println("↩ Volviendo al menú principal...");
                 default -> System.out.println("⚠️ Opción inválida.");
             }
-
         } while (opcion != 4);
     }
 
-    // Clientes
+    // MENÚ CLIENTES
     public static void menuClientes(Scanner sc, ClienteDAO dao) {
         int opcion;
         do {
@@ -156,12 +153,12 @@ public class Main {
                     System.out.print("Teléfono: ");
                     String telefono = sc.nextLine();
 
-                    dao.insertar(new Cliente(nombre, correo, telefono));
+                    dao.insertar(new Cliente(0, nombre, correo, telefono));
                 }
                 case 2 -> {
                     List<Cliente> lista = dao.obtenerTodos();
                     for (Cliente c : lista) {
-                        System.out.println("→ " + c.getId() + " - " + c);
+                        System.out.println("→ " + c.getId() + " - " + c.getNombre());
                     }
                 }
                 case 3 -> {
@@ -172,33 +169,29 @@ public class Main {
                 case 4 -> System.out.println("↩ Volviendo al menú principal...");
                 default -> System.out.println("⚠️ Opción inválida.");
             }
-
         } while (opcion != 4);
     }
 
+    // MENÚ VENTAS
     public static void menuVentas(Scanner sc, ClienteDAO clienteDAO, ProductoDAO productoDAO, VentaDAO ventaDAO, VentaDetalleDAO detalleDAO) {
         System.out.println("\n🧾 REGISTRAR VENTA");
 
-        // 1. Seleccionar cliente
-        System.out.println("Clientes disponibles:");
         List<Cliente> clientes = clienteDAO.obtenerTodos();
         for (Cliente c : clientes) {
-            System.out.println("→ " + c.getId() + " - " + c);
+            System.out.println("→ " + c.getId() + " - " + c.getNombre());
         }
         System.out.print("ID del cliente: ");
         int idCliente = Integer.parseInt(sc.nextLine());
 
-        // 2. Agregar productos al carrito
         List<Producto> carrito = new ArrayList<>();
         List<Integer> cantidades = new ArrayList<>();
         double totalVenta = 0.0;
         boolean seguir;
 
         do {
-            System.out.println("\nProductos disponibles:");
             List<Producto> productos = productoDAO.obtenerTodos();
             for (Producto p : productos) {
-                System.out.println("→ " + p.getId() + " - " + p);
+                System.out.println("→ " + p.getId() + " - " + p.getNombre());
             }
 
             System.out.print("ID del producto: ");
@@ -221,14 +214,11 @@ public class Main {
 
             System.out.print("¿Agregar otro producto? (s/n): ");
             seguir = sc.nextLine().equalsIgnoreCase("s");
-
         } while (seguir);
 
-        // 3. Registrar venta
         Venta venta = new Venta(idCliente, LocalDate.now(), totalVenta);
         int idVenta = ventaDAO.registrar(venta);
 
-        // 4. Registrar detalles de la venta
         for (int i = 0; i < carrito.size(); i++) {
             Producto p = carrito.get(i);
             int cant = cantidades.get(i);
@@ -239,5 +229,4 @@ public class Main {
 
         System.out.println("✅ Venta registrada con total: S/. " + totalVenta);
     }
-
 }

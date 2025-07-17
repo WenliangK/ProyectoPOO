@@ -1,28 +1,53 @@
 package BusinessEntity;
 
-import java.util.Date;
-
 public class ComprobanteCompra {
     private int id;
-    private Cliente cliente;
-    private Producto producto;
-    private Date fechaCompra;
+    private String fecha;
+    private double montoTotal;
 
-    public ComprobanteCompra(int id, Cliente cliente, Producto producto, Date fechaCompra) {
-        this.id = id;
-        this.cliente = cliente;
-        this.producto = producto;
-        this.fechaCompra = fechaCompra;
+    // Constructor sin ID (para insertar)
+    public ComprobanteCompra(String fecha, double montoTotal) {
+        this.fecha = fecha;
+        this.montoTotal = montoTotal;
     }
 
-    // Getters y Setters
-    public int getId() { return id; }
-    public Cliente getCliente() { return cliente; }
-    public Producto getProducto() { return producto; }
-    public Date getFechaCompra() { return fechaCompra; }
+    // Constructor con ID (para leer desde la BD)
+    public ComprobanteCompra(int id, String fecha, double montoTotal) {
+        this.id = id;
+        this.fecha = fecha;
+        this.montoTotal = montoTotal;
+    }
 
-    public void setId(int id) { this.id = id; }
-    public void setCliente(Cliente cliente) { this.cliente = cliente; }
-    public void setProducto(Producto producto) { this.producto = producto; }
-    public void setFechaCompra(Date fechaCompra) { this.fechaCompra = fechaCompra; }
+    public int getId() {
+        return id;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public double getMontoTotal() {
+        return montoTotal;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setMontoTotal(double montoTotal) {
+        this.montoTotal = montoTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "ComprobanteCompra{" +
+                "id=" + id +
+                ", fecha='" + fecha + '\'' +
+                ", montoTotal=" + montoTotal +
+                '}';
+    }
 }
