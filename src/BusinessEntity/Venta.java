@@ -6,21 +6,24 @@ public class Venta {
     private int id;
     private int idCliente;
     private LocalDate fecha;
-    private double montoTotal;
+    private double total;
 
-    public Venta(int idCliente, LocalDate fecha, double montoTotal) {
+    // Constructor sin ID (para registrar nuevas ventas)
+    public Venta(int idCliente, LocalDate fecha, double total) {
         this.idCliente = idCliente;
         this.fecha = fecha;
-        this.montoTotal = montoTotal;
+        this.total = total;
     }
 
-    public Venta(int id, int idCliente, LocalDate fecha, double montoTotal) {
+    // Constructor completo
+    public Venta(int id, int idCliente, LocalDate fecha, double total) {
         this.id = id;
         this.idCliente = idCliente;
         this.fecha = fecha;
-        this.montoTotal = montoTotal;
+        this.total = total;
     }
 
+    // Getters y setters
     public int getId() {
         return id;
     }
@@ -33,8 +36,8 @@ public class Venta {
         return fecha;
     }
 
-    public double getMontoTotal() {
-        return montoTotal;
+    public double getTotal() {
+        return total;
     }
 
     public void setId(int id) {
@@ -49,12 +52,7 @@ public class Venta {
         this.fecha = fecha;
     }
 
-    public void setMontoTotal(double montoTotal) {
-        this.montoTotal = montoTotal;
-    }
-
-    @Override
-    public String toString() {
-        return "Venta ID: " + id + ", Cliente ID: " + idCliente + ", Fecha: " + fecha + ", Total: S/. " + montoTotal;
+    public void setTotal(double total) {
+        this.total = total;
     }
 }
